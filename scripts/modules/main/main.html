@@ -21,7 +21,12 @@
                 </div>
               </div>    
             </div>
-              <h3>Birthdays over the next 2 weeks</h3>
+            <h3>Birthdays over the next 2 weeks</h3>
+              <div class="birthday birthdaySoon" ng-show="birthday.isSoon && !birthday.isToday" ng-repeat="birthday in vm.birthdays" title="{{birthday.forename}} {{birthday.surname}}'s birthday!">
+                <div>
+                  {{birthday.forename}}'s {{birthday.DOB | nthbirthday}}
+                </div>
+              </div>    
             </div>   
         </uib-tab>
         
