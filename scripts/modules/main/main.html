@@ -1,37 +1,51 @@
 <div class="container">
-  <div class="header-container">
-    <div class="header-image">
-      <img class="image" src="https://cdn0.iconfinder.com/data/icons/party-icons/110/Party-Hat-512.png">
+  <div class="parchment">
+    <div class="header-container">
+      <div class="header-image">
+        <img class="image" src="https://cdn0.iconfinder.com/data/icons/party-icons/110/Party-Hat-512.png">
+      </div>
+      <div class="header-title">
+        <h1>Birthday Tracker</h1>
+        <h4>Currently tracking {{vm.birthdays.length}} birthdays</h4>
+      </div>
     </div>
-    <div class="header-title">
-      <h1>Birthday Tracker</h1>
-      <h4>Currently tracking {{vm.birthdays.length}} birthdays</h4>
-    </div>
-  </div>
-  <div>
-    <uib-tabset>
-      <uib-tab index="0" heading="Upcoming">
-        <h1>birthdays within next 2 weeks</h1>
-        <div ng-repeat="birthday in vm.birthdays">
-          <div ng-show="birthday.isSoon">
-            {{birthday.forename}} - {{birthday.DOB}}
-            <div ng-show="birthday.isToday">HAPPY BIRTHDAY!</div>
-          </div>
-        </div>            
-      </uib-tab>
-      
-      <uib-tab index="1" heading="All Birthdays">
+    <div>
+      <uib-tabset>
+        <uib-tab index="0" heading="Upcoming">
+          <div class="scripture">
+              <h1>birthdays within next 2 weeks</h1>
+              <div ng-repeat="birthday in vm.birthdays">
+                <div ng-show="birthday.isSoon">
+                  {{birthday.forename}} - {{birthday.DOB}}
+                  <div ng-show="birthday.isToday">HAPPY BIRTHDAY!</div>
+                </div>
+              </div>    
+            </div>   
+        </uib-tab>
         
-      </uib-tab>
-      <button class="btn btn-primary tab-button" ng-click="vm.addBirthday()">
-        <i class="icon ion-plus-round" style="margin-right: 4px;"></i><span class="icon">Add Birthday</span>
-      </button>
-    </uib-tabset>
+        <uib-tab index="1" heading="All Birthdays">
+          <div class="scripture">
+            <div ng-repeat="birthday in vm.birthdays">
+              <div>
+                {{birthday.forename}} - {{birthday.DOB}}
+                <button class="btn btn-warning btn-failure tab-button" ng-click="vm.addBirthday()">
+                  <i class="icon ion-plus-round" style="margin-right: 4px;"></i><span class="icon">Add Birthday</span>
+                </button>
+                <div ng-show="birthday.isToday">HAPPY BIRTHDAY!</div>
+              </div>
+            </div>           
+          </div>
+        </uib-tab>
+        <button class="btn btn-primary tab-button" ng-click="vm.addBirthday()">
+          <i class="icon ion-plus-round" style="margin-right: 4px;"></i><span class="icon">Add Birthday</span>
+        </button>
+      </uib-tabset>
+    </div>
+
+    
+    
+
+
+
   </div>
-
-  
-  
-
-
-
 </div>

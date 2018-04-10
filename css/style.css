@@ -1,8 +1,20 @@
 /* Empty. Add your own CSS if you like */
+.parchment {
+    border: 1px solid #ddd; 
+    border-width: 0 1px;
+    xheight: 1080px;
+}
+.scripture {
+    padding: 5px 10px;
+}
 .header-container {
     display: flex;
     flex-direction: row;
     margin-bottom: 10px;
+    padding-bottom: 42px;
+    margin-bottom: -42px;
+    background: linear-gradient(teal, white);
+    color: white
 }
 .header-image {
     flex: 1 1;
@@ -26,4 +38,14 @@ img{
 }
 .tab-button {
     height: 40px;
+}
+.btn-failure{
+    border-color: #dd3333;
+    background: #ff3333;
+    color: white;
+}
+.btn-failure:hover{
+    border-color: #dd3333;
+    background: #cc3333;
+    color: white;
 }
