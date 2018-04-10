@@ -1,12 +1,37 @@
 <div class="container">
-  <button ng-click="vm.addBirthday()">add birthday</button>
-  {{vm.birthdays}}
-  <br>
-  <h1>birthdays within next 2 weeks</h1>
-  <div ng-repeat="birthday in vm.birthdays">
-    <div ng-show="birthday.isSoon">
-      {{birthday.forename}} - {{birthday.DOB}}
-      <div ng-show="birthday.isToday">HAPPY BIRTHDAY!</div>
+  <div class="header-container">
+    <div class="header-image">
+      <img class="image" src="https://cdn0.iconfinder.com/data/icons/party-icons/110/Party-Hat-512.png">
+    </div>
+    <div class="header-title">
+      <h1>Birthday Tracker</h1>
+      <h4>Currently tracking {{vm.birthdays.length}} birthdays</h4>
     </div>
   </div>
+  <div>
+    <uib-tabset>
+      <uib-tab index="0" heading="Upcoming">
+        <h1>birthdays within next 2 weeks</h1>
+        <div ng-repeat="birthday in vm.birthdays">
+          <div ng-show="birthday.isSoon">
+            {{birthday.forename}} - {{birthday.DOB}}
+            <div ng-show="birthday.isToday">HAPPY BIRTHDAY!</div>
+          </div>
+        </div>            
+      </uib-tab>
+      
+      <uib-tab index="1" heading="All Birthdays">
+        
+      </uib-tab>
+      <button class="btn btn-primary tab-button" ng-click="vm.addBirthday()">
+        <i class="icon ion-plus-round" style="margin-right: 4px;"></i><span class="icon">Add Birthday</span>
+      </button>
+    </uib-tabset>
+  </div>
+
+  
+  
+
+
+
 </div>
