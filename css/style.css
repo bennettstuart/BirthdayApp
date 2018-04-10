@@ -49,3 +49,8 @@ img{
     background: #cc3333;
     color: white;
 }
+.btn-failure:focus{
+    border-color: #dd3333;
+    background: #cc3333;
+    color: white;
+}

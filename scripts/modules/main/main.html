@@ -28,8 +28,8 @@
             <div ng-repeat="birthday in vm.birthdays">
               <div>
                 {{birthday.forename}} - {{birthday.DOB}}
-                <button class="btn btn-warning btn-failure tab-button" ng-click="vm.addBirthday()">
-                  <i class="icon ion-plus-round" style="margin-right: 4px;"></i><span class="icon">Add Birthday</span>
+                <button class="btn btn-failure" ng-click="vm.deleteBirthday(birthday.id)">
+                  <i class="icon ion-trash-a"></i>
                 </button>
                 <div ng-show="birthday.isToday">HAPPY BIRTHDAY!</div>
               </div>

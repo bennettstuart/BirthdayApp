@@ -35,6 +35,7 @@
         var vetBirthdaysLocally = function(birthdayObj){
             //looks at birthdays coming in and evaluates them accordingly
             var vettedBirthday = {
+                id: birthdayObj.id,
                 forename: birthdayObj.forename,
                 surname: birthdayObj.surname,
                 DOB: birthdayObj.DOB,
@@ -69,6 +70,21 @@
                 console.log("Birthday ADDED!");
                 vetBirthdaysLocally(response.data);
             });
+        }
+
+        vm.deleteBirthday = function(id){
+            dataSrvc.deleteBirthday(id).then(function(){
+                //it was delete on the _"backend"_, now remove our handle of it
+                for(var i=0; i < vm.birthdays.length; i++){
+                    if(vm.birthdays[i].id == id){
+                        vm.birthdays.splice(i, 1);
+                        break;
+                    }
+                }
+            },
+            function(err){
+                window.alert(err.error)
+            })
         }
 
         var isWithinXDaysFromNow = function(birthdayObj, X){

@@ -21,7 +21,7 @@
             counter: null
         }
 
-        var asyncDelay = 250
+        var asyncDelay = 50;
 
         var defaultData = [
             {
@@ -103,7 +103,7 @@
                 var shouldResolve = false
                 for(var i=0; i<service.data.length; i++){
                     if(service.data[i].id == id){
-                        service.data.slice(i, 1);
+                        service.data.splice(i, 1);
                         shouldResolve = true;
                     }
                 }
