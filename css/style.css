@@ -54,3 +54,17 @@ img{
     background: #cc3333;
     color: white;
 }
+.birthdays {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.birthday {
+    background: yellow;
+    display: block;
+    width: 250px;
+    border: 1px solid black;
+    border-radius: 15px;
+    padding: 5px;
+    margin: 2px
+}

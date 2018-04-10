@@ -13,13 +13,16 @@
       <uib-tabset>
         <uib-tab index="0" heading="Upcoming">
           <div class="scripture">
-              <h1>birthdays within next 2 weeks</h1>
-              <div ng-repeat="birthday in vm.birthdays">
+            <h3>Birthdays today</h3>
+            <div class="birthdays">
+              <div class="birthday" ng-show="birthday.isToday" ng-repeat="birthday in vm.birthdays" title="{{birthday.forename}} {{birthday.surname}}'s birthday'">
                 <div ng-show="birthday.isSoon">
-                  {{birthday.forename}} - {{birthday.DOB}}
-                  <div ng-show="birthday.isToday">HAPPY BIRTHDAY!</div>
+                  {{birthday.forename}}'s {{birthday.DOB}}
+                  <div >HAPPY BIRTHDAY!</div>
                 </div>
               </div>    
+            </div>
+              <h3>Birthdays over the next 2 weeks</h3>
             </div>   
         </uib-tab>
         
