@@ -62,7 +62,7 @@
 
         var birthday = {
             forename: "nigel",
-            DOB: "2018-04-10"
+            DOB: "2015-04-10"
         }
 
         vm.addBirthday = function(){

@@ -15,10 +15,9 @@
           <div class="scripture">
             <h3>Birthdays today</h3>
             <div class="birthdays">
-              <div class="birthday" ng-show="birthday.isToday" ng-repeat="birthday in vm.birthdays" title="{{birthday.forename}} {{birthday.surname}}'s birthday'">
+              <div class="birthday" ng-show="birthday.isToday" ng-repeat="birthday in vm.birthdays" title="{{birthday.forename}} {{birthday.surname}}'s birthday!">
                 <div ng-show="birthday.isSoon">
-                  {{birthday.forename}}'s {{birthday.DOB}}
-                  <div >HAPPY BIRTHDAY!</div>
+                  {{birthday.forename}}'s {{birthday.DOB | nthbirthday}}
                 </div>
               </div>    
             </div>
