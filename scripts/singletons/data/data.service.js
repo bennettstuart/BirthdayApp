@@ -17,26 +17,24 @@
         $timeout
     ) {
         var service = {
-            data: []
+            data: [],
+            counter: null
         }
 
         var asyncDelay = 250
 
         var defaultData = [
             {
-                id: 0,
                 forname: "John",
                 surname: "Doe",
                 DOB: "1981-08-02"
             },
             {
-                id: 1,
                 forname: "Katie",
                 surname: "Smith",
                 DOB: "1973-05-20"
             },
             {
-                id: 2,
                 forname: "Anna",
                 surname: "Jackson",
                 DOB: "1993-10-15"
@@ -44,7 +42,19 @@
         ];
 
         var init = function() {
-            service.data = defaultData;
+            service.counter = 0;
+            angular.forEach(defaultData, function(birthday, index){
+                //we dont add by async to ensure default data is loaded in before we can get
+                service.data.push(
+                    {
+                        id: service.counter++,
+                        forname: birthday.forename,
+                        surname: birthday.surname,
+                        DOB: birthday.DOB
+                    }
+                );
+            })
+            console.log(service.data)
         }
 
         service.getData = function() {
@@ -69,7 +79,7 @@
                 }else{
                     service.data.push(
                         {
-                            id: service.data.length,
+                            id: service.counter++,
                             forname: birthday.forename,
                             surname: birthday.surname,
                             DOB: birthday.DOB
@@ -89,11 +99,19 @@
         service.deleteBirthday = function(id){
             var deferred = $q.defer()
             $timeout(function() { //timeout to emulate async
-                if((id < 0)||(id >= service.data.length)){
-                    deferred.reject({error:"ID ERROR"});
-                }else{
-                    service.data.slice(id, 1)
-                } 
+                //delete the birthday.id==id
+                var shouldResolve = false
+                for(var i=0; i<service.data.length; i++){
+                    if(service.data[i].id == id){
+                        service.data.slice(i, 1);
+                        shouldResolve = true;
+                    }
+                }
+                if(shouldResolve){
+                    deferred.resolve();
+                } else {
+                    deferred.resolve({error:"ID ERROR"});
+                }
             }, asyncDelay);
             return deferred.promise
         }
