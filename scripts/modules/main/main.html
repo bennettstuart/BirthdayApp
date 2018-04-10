@@ -1,3 +1,12 @@
 <div class="container">
-  KappaPride
+  <button ng-click="vm.addBirthday()">add birthday</button>
+  {{vm.birthdays}}
+  <br>
+  <h1>birthdays within next 2 weeks</h1>
+  <div ng-repeat="birthday in vm.birthdays">
+    <div ng-show="birthday.isSoon">
+      {{birthday.forename}} - {{birthday.DOB}}
+      <div ng-show="birthday.isToday">HAPPY BIRTHDAY!</div>
+    </div>
+  </div>
 </div>

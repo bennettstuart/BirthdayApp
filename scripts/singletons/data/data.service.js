@@ -25,17 +25,17 @@
 
         var defaultData = [
             {
-                forname: "John",
+                forename: "John",
                 surname: "Doe",
                 DOB: "1981-08-02"
             },
             {
-                forname: "Katie",
+                forename: "Katie",
                 surname: "Smith",
                 DOB: "1973-05-20"
             },
             {
-                forname: "Anna",
+                forename: "Anna",
                 surname: "Jackson",
                 DOB: "1993-10-15"
             }
@@ -48,7 +48,7 @@
                 service.data.push(
                     {
                         id: service.counter++,
-                        forname: birthday.forename,
+                        forename: birthday.forename,
                         surname: birthday.surname,
                         DOB: birthday.DOB
                     }
@@ -74,13 +74,13 @@
             $timeout(function() { //timeout to emulate async
                 if(!birthday.hasOwnProperty('DOB')){
                     deferred.reject({error:"DOB MISSING"});
-                }else if(!birthday.hasOwnProperty('forname')){
-                    deferred.reject({error:"forname MISSING"});
+                }else if(!birthday.hasOwnProperty('forename')){
+                    deferred.reject({error:"forename MISSING"});
                 }else{
                     service.data.push(
                         {
                             id: service.counter++,
-                            forname: birthday.forename,
+                            forename: birthday.forename,
                             surname: birthday.surname,
                             DOB: birthday.DOB
                         }
