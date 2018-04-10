@@ -1,4 +1,4 @@
-# BirthdayApp
+# BirthdayApp [Demo](https://bennettstuart.github.io/BirthdayApp)
 ## The Challenge
 To spend a only a handful of hours to implement the features outline below.
 - This is a UI challenge, and so it should look and feel great!
@@ -13,59 +13,25 @@ There should be an option to delete birthdays too.
 
 ## How to install/run this project:
 
-See a live demo of the project HERE!
+See a live demo of the project [HERE](https://bennettstuart.github.io/BirthdayApp)!
 
 To run this project:
 1. clone this repo
 1. `$ npm install serve -g`
-1. open the local repo in terminal.
-1. change into the www directory `$ cd www/`
+1. open the local repo in terminal
 1. `$ serve`
 
 ## Technical choices:
 I chose to use Angular.js for this project becuase it is the javascript framework that I have the most experience with. Allowing me to get on with the nitty gritty of the challenge without having to spend much time in documentation.
 
+I've never really used UI-bootstrap before, despite being closely designed for AngularJS. I chose to use this however because my previous front end development has been primarily designed for cross-platform mobild applications which utilised [Ionic Framework](https://ionicframework.com/docs/v1/)
 
-.  
-.  
-.  
-.  
-.  
-.  
-.  
-.  
-.  
-.  
-.  
-.  
-.  
-.  
-.  
-.  
-.  
-.  
-.  
-.  
-.  
-.  
-.  
-.  
 
-## README file must include:
+## Trade-offs
+Using UI-Bootstrap did eat some time, as I was not used to working with it. However, I was happy that I did manage to get as far as I did by using it, and would look to use it again in the future for sure.
 
-- How to install and run the project.
-- Reasoning behind your technical choices.
-- Describe any trade-offs you needed to make and your reasoning.
-- Point out anything you might do differently if you had more time.
-- Your contact details and any public profiles on developer networks like GitHub, BitBucket, Stack Overflow, etc.
+## What would I do differently
+Perhaps I would spend more time wireframing and then going for more look and feel over a more bug-free functionality approach.
 
-## How the challenge is reviewed
-
-- Well organised and structured code.
-- Frequent commits so we can see how your work progressed.
-- A good README file that explains succinctly your approach.
-- The app/project should work in the way that was explained.
-- The code is well written, readable, consistent, maintainable and follows broad best - practice.
-- Tests are in place and provide good basic coverage.
-- UX is good.
-- The technical choices (libraries, patterns) are sensible.
+## Me
+[Find me on Github.](https://github.com/bennettstuart)
