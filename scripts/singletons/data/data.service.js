@@ -20,18 +20,26 @@
             data: []
         }
 
+        var asyncDelay = 250
+
         var defaultData = [
             {
-                "name": "John Doe",
-                "birthday": "1981-08-02"
+                id: 0,
+                forname: "John",
+                surname: "Doe",
+                DOB: "1981-08-02"
             },
             {
-                "name": "Katie Smith",
-                "birthday": "1973-05-20"
+                id: 1,
+                forname: "Katie",
+                surname: "Smith",
+                DOB: "1973-05-20"
             },
             {
-                "name": "Anna Jackson",
-                "birthday": "1993-10-15"
+                id: 2,
+                forname: "Anna",
+                surname: "Jackson",
+                DOB: "1993-10-15"
             }
         ];
 
@@ -40,13 +48,53 @@
         }
 
         service.getData = function() {
-            //asyncfn
             var deferred = $q.defer();
+            $timeout(function() { //timeout to emulate async
+                var response = {
+                    data: service.data
+                };
 
-            $timeout(function() {
+                deferred.resolve(response)
+            }, asyncDelay);
+            return deferred.promise
+        }
 
-            }, 250);
+        service.postBirthday = function(birthday){
+            var deferred = $q.defer()
+            $timeout(function() { //timeout to emulate async
+                if(!birthday.hasOwnProperty('DOB')){
+                    deferred.reject({error:"DOB MISSING"});
+                }else if(!birthday.hasOwnProperty('forname')){
+                    deferred.reject({error:"forname MISSING"});
+                }else{
+                    service.data.push(
+                        {
+                            id: service.data.length,
+                            forname: birthday.forename,
+                            surname: birthday.surname,
+                            DOB: birthday.DOB
+                        }
+                    );
 
+                    //return the last added
+                    var response = {
+                        data: service.data[service.data.length -1]
+                    }
+                    return deferred.resolve(response) 
+                } 
+            }, asyncDelay);
+            return deferred.promise
+        }
+
+        service.deleteBirthday = function(id){
+            var deferred = $q.defer()
+            $timeout(function() { //timeout to emulate async
+                if((id < 0)||(id >= service.data.length)){
+                    deferred.reject({error:"ID ERROR"});
+                }else{
+                    service.data.slice(id, 1)
+                } 
+            }, asyncDelay);
             return deferred.promise
         }
 

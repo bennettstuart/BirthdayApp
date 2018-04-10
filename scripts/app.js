@@ -2,7 +2,8 @@ angular.module('starter',
   [
     'ui.bootstrap',
     'ui.router',
-    'app.main'
+    'app.main',
+    'singletons'
   ])
 
 .config(function($urlRouterProvider) {
