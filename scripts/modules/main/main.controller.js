@@ -80,7 +80,23 @@
                 animation: vm.animationsEnabled,
                 ariaLabelledBy: 'modal-title',
                 ariaDescribedBy: 'modal-body',
-                templateUrl: 'scripts/modules/main/newBirthdayModal.html',
+                //templateUrl: './scripts/modules/main/newBirthdayModal.html',
+                template: `
+                <div class="modal-header">
+                    <h3 class="modal-title" id="modal-title">Track a new Birthday!</h3>
+                </div>
+                <div class="modal-body" id="modal-body">
+                    <form>
+                        First name: <input ng-disabled="vm.modalLocked" ng-model="vm.tempBirthday.forename" type="text" name="fname" required><br>
+                        Last name: <input ng-disabled="vm.modalLocked" ng-model="vm.tempBirthday.surname" type="text" name="lname"><br>
+                        DOB: <input ng-disabled="vm.modalLocked" ng-model="vm.tempBirthday.DOB" type="date" name="dob" required><br>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button ng-disabled="vm.modalLocked" class="btn btn-primary" type="button" ng-click="vm.addBirthday()">OK</button>
+                    <button ng-disabled="vm.modalLocked" class="btn btn-warning" type="button" ng-click="vm.modalInstance.close()">Cancel</button>
+                </div>
+                `,
                 scope: $scope,
                 appendTo: parentElem,
                 resolve: {
