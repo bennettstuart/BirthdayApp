@@ -64,22 +64,19 @@
             })
             return deferred.promise
         }
-
-        var birthday = {
-            forename: "nigel",
-            DOB: "2015-04-10"
-        }
         
-        vm.tempBirthday = {
-            forename: "",
-            surname: "",
-            DOB: new Date(),
-        }
         vm.newBirthday = function(parentSelector){
+            vm.modalLocked = false
+
+            vm.tempBirthday = {
+                forename: "",
+                surname: "",
+                DOB: new Date(),
+            }
 
             var parentElem = parentSelector ? 
                 angular.element($document[0].querySelector('.modal-demo ' + parentSelector)) : undefined;
-            var modalInstance = $uibModal.open({
+            vm.modalInstance = $uibModal.open({
                 animation: vm.animationsEnabled,
                 ariaLabelledBy: 'modal-title',
                 ariaDescribedBy: 'modal-body',
@@ -93,17 +90,15 @@
                 }
             });
 
-            modalInstance.result.then(function (selectedItem) {
-                vm.selected = selectedItem;
-            }, function () {
-            
-            });
         }
 
         vm.addBirthday = function() {
+            vm.modalLocked = true
             dataSrvc.postBirthday(vm.tempBirthday).then(function(response){
                 console.log("Birthday ADDED!");
                 vetBirthdaysLocally(response.data);
+                vm.modalLocked = false
+                vm.modalInstance.close();
             });
         }
 
