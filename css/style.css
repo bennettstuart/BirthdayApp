@@ -2,7 +2,6 @@
 .parchment {
     border: 1px solid #ddd; 
     border-width: 0 1px;
-    xheight: 1080px;
 }
 .scripture {
     padding: 5px 10px;
@@ -60,11 +59,11 @@ img{
     flex-wrap: wrap;
 }
 .birthday {
-    background: yellow;
+    background: #77dd77;
     display: block;
     width: 250px;
     border: 1px solid #0003;
     border-radius: 15px;
-    padding: 5px;
+    padding: 5px 10px;
     margin: 2px
 }

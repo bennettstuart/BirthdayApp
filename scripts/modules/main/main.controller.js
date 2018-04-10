@@ -7,17 +7,22 @@
 
     mainCtrl.$inject = [
         '$state',
+        '$scope',
         'dataSrvc',
-        '$q'
+        '$q',
+        '$uibModal',
     ];
     
     function mainCtrl(
         $state,
+        $scope,
         dataSrvc,
-        $q
+        $q,
+        $uibModal
     ) {
         var vm = angular.extend(this, {
-            initialised: false
+            initialised: false,
+            filter: ""
         });
 
         var init = function() {
@@ -64,9 +69,39 @@
             forename: "nigel",
             DOB: "2015-04-10"
         }
+        
+        vm.tempBirthday = {
+            forename: "",
+            surname: "",
+            DOB: new Date(),
+        }
+        vm.newBirthday = function(parentSelector){
 
-        vm.addBirthday = function(){
-            dataSrvc.postBirthday(birthday).then(function(response){
+            var parentElem = parentSelector ? 
+                angular.element($document[0].querySelector('.modal-demo ' + parentSelector)) : undefined;
+            var modalInstance = $uibModal.open({
+                animation: vm.animationsEnabled,
+                ariaLabelledBy: 'modal-title',
+                ariaDescribedBy: 'modal-body',
+                templateUrl: 'scripts/modules/main/newBirthdayModal.html',
+                scope: $scope,
+                appendTo: parentElem,
+                resolve: {
+                    items: function () {
+                    return vm.items;
+                    }
+                }
+            });
+
+            modalInstance.result.then(function (selectedItem) {
+                vm.selected = selectedItem;
+            }, function () {
+            
+            });
+        }
+
+        vm.addBirthday = function() {
+            dataSrvc.postBirthday(vm.tempBirthday).then(function(response){
                 console.log("Birthday ADDED!");
                 vetBirthdaysLocally(response.data);
             });
